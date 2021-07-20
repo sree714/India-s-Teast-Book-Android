@@ -1,4 +1,4 @@
-package com.indiasteastbook;
+package com.indiastastebook;
 
 import android.content.Context;
 

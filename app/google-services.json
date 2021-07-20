@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "260863522419",
+    "project_id": "india-s-taste-book",
+    "storage_bucket": "india-s-taste-book.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260863522419:android:ed4ce59e5dc561d207dc06",
+        "android_client_info": {
+          "package_name": "com.indiastastebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260863522419-0big822qptd1dcto4eumm7oikt951rcn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.indiastastebook",
+            "certificate_hash": "842b3302572b4b39228e8c6e1dd0d748e5c9fb95"
+          }
+        },
+        {
+          "client_id": "260863522419-bekt6h06cgfd5q9scp4n6ga3cie17p9n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDktYfY9aWXosFVWlpCQLdNMLtZ1xZahOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260863522419-bekt6h06cgfd5q9scp4n6ga3cie17p9n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
