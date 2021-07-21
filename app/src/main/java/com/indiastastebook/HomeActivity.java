@@ -24,6 +24,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-   
+
 
 }
