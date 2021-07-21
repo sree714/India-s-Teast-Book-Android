@@ -2,6 +2,7 @@ package com.indiastastebook;
 // 84:2B:33:02:57:2B:4B:39:22:8E:8C:6E:1D:D0:D7:48:E5:C9:FB:95
 //sha1 key
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-        
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -27,4 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, SPLASH_SCREEN_TIME_OUT);
     }
+
+
+
 }
