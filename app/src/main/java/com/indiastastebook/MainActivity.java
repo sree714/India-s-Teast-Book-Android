@@ -30,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
         }, SPLASH_SCREEN_TIME_OUT);
     }
 
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 
 
 }
