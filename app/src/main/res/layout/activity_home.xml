@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".HomeActivity"
-    tools:openDrawer="start">
+    tools:context=".activity.HomeActivity">
     <!--    tools:openDrawer="start"-->
 
     <LinearLayout
@@ -29,6 +28,11 @@
             app:title="@string/app_name"
             app:titleTextColor="@color/white" />
 
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
     </LinearLayout>
 

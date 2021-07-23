@@ -1,4 +1,4 @@
-package com.indiastastebook;
+package com.indiastastebook.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,9 +15,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.indiastastebook.R;
+import com.indiastastebook.fragment.HomeFragment;
 import com.indiastastebook.utils.App;
 
 
@@ -25,13 +28,14 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Button logout;
     private NavigationView navigation;
+    private Fragment selectedFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initId();
-
+        openHomeFragment();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -48,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_home:
-                        App.toast(HomeActivity.this, "Home");
+                        openHomeFragment();
                         break;
 
                     case R.id.menu_select_language:
@@ -74,6 +78,14 @@ public class HomeActivity extends AppCompatActivity {
         logout = findViewById(R.id.home_logout);
         toolbar = findViewById(R.id.toolbar_home);
         navigation = findViewById(R.id.nav_view);
+    }
+
+    private void openHomeFragment()
+    {
+        selectedFragment=new HomeFragment();
+        FragmentManager manager=getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.frame_layout,selectedFragment).commit();
+
     }
 
     @Override
