@@ -18,6 +18,7 @@ import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 import com.indiastastebook.R;
+import com.indiastastebook.fragment.FavouriteFragment;
 import com.indiastastebook.fragment.HomeFragment;
 import com.indiastastebook.utils.App;
 
@@ -35,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initId();
-        openHomeFragment();
+        openFragment(new HomeFragment());
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -52,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_home:
-                        openHomeFragment();
+                       openFragment(new HomeFragment());
                         break;
 
                     case R.id.menu_select_language:
@@ -60,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case R.id.menu_favourite:
-                        App.toast(HomeActivity.this, "fav");
+                        openFragment(new FavouriteFragment());
                         break;
 
                 }
@@ -80,13 +81,13 @@ public class HomeActivity extends AppCompatActivity {
         navigation = findViewById(R.id.nav_view);
     }
 
-    private void openHomeFragment()
-    {
-        selectedFragment=new HomeFragment();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout,selectedFragment).commit();
+    private void openFragment(Fragment fragment) {
+        selectedFragment =  fragment;
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.frame_layout, selectedFragment).commit();
 
     }
+
 
     @Override
     public void startActivity(Intent intent) {

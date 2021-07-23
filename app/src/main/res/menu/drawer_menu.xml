@@ -7,18 +7,17 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/menu_home"
-            android:title="Home"
-            android:icon="@drawable/ic_sharp_home_24"/>
+            android:icon="@drawable/ic_sharp_home_24"
+            android:title="Home" />
+        <item
+            android:id="@+id/menu_favourite"
+            android:icon="@drawable/ic_baseline_star_24"
+            android:title="Favourite Recipe" />
 
         <item
             android:id="@+id/menu_select_language"
-            android:title="Select Language"
-            android:icon="@drawable/ic_sharp_language_24"/>
-
-        <item
-            android:id="@+id/menu_favourite"
-            android:title="Favourite Recipe"
-            android:icon="@drawable/ic_baseline_star_24"/>
+            android:icon="@drawable/ic_sharp_language_24"
+            android:title="Select Language" />
 
 
     </group>
