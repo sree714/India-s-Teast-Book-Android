@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group
+        android:id="@+id/nav_dashboard_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/btm_menu_east"
+            android:title="East" />
+        <item
+            android:id="@+id/btm_menu_west"
+
+            android:title="West" />
+
+        <item
+            android:id="@+id/btm_menu_north"
+
+            android:title="North" />
+
+        <item
+            android:id="@+id/btm_menu_south"
+
+            android:title="South"
+
+            />
+
+
+    </group>
+
+</menu>
