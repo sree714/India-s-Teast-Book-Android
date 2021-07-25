@@ -18,6 +18,7 @@
         app:menu="@menu/btm_menu"
         app:labelVisibilityMode="labeled"
         app:itemTextColor="@color/btm_nav_color"
-        android:background="@color/cream"/>
+        android:background="@color/Maroon_500"
+        app:itemIconTint="@drawable/btm_nav_selector"/>
 
 </RelativeLayout>

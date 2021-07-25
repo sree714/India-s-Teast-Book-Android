@@ -7,20 +7,24 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/btm_menu_east"
+            android:icon="@drawable/ic_sharp_east_24"
             android:title="East" />
         <item
             android:id="@+id/btm_menu_west"
 
+            android:icon="@drawable/ic_baseline_west_24"
             android:title="West" />
 
         <item
             android:id="@+id/btm_menu_north"
 
+            android:icon="@drawable/ic_baseline_north_24"
             android:title="North" />
 
         <item
             android:id="@+id/btm_menu_south"
 
+            android:icon="@drawable/ic_baseline_south_24"
             android:title="South"
 
             />

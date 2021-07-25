@@ -38,16 +38,20 @@ public class HomeFragment extends Fragment {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.btm_menu_east:
+                    item.setChecked(true);
                     openFragment(new RegionFragment("East"));
                     break;
 
                 case R.id.btm_menu_west:
+                    item.setChecked(true);
                     openFragment(new RegionFragment("West"));
                     break;
                 case R.id.btm_menu_north:
+                    item.setChecked(true);
                     openFragment(new RegionFragment("North"));
                     break;
                 case R.id.btm_menu_south:
+                    item.setChecked(true);
                     openFragment(new RegionFragment("South"));
                     break;
             }
@@ -62,7 +66,7 @@ public class HomeFragment extends Fragment {
     private void openFragment(Fragment fragment) {
         selectedFragment = fragment;
         FragmentManager manager = getActivity().getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.frame_layout, selectedFragment).commit();
+        manager.beginTransaction().replace(R.id.fragment_home_frame, selectedFragment).commit();
 
     }
 }
