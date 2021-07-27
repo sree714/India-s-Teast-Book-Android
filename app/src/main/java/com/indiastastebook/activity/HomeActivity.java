@@ -15,8 +15,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -35,6 +37,8 @@ import com.indiastastebook.fragment.FavouriteFragment;
 import com.indiastastebook.fragment.HomeFragment;
 import com.indiastastebook.utils.App;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -45,8 +49,10 @@ public class HomeActivity extends AppCompatActivity {
     private NavigationView navigation;
     private Fragment selectedFragment;
 
+
     //global variable
     private FirebaseAuth mAuth;
+    private FirebaseUser firebaseUser;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 1;
 
@@ -65,6 +71,7 @@ public class HomeActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser=mAuth.getCurrentUser();
 
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -79,8 +86,16 @@ public class HomeActivity extends AppCompatActivity {
 
         navigation.setItemIconTintList(null);
         View header = navigation.getHeaderView(0);
-        //TextView navName = header.findViewById(R.id.name);
-        //TextView navPhone = header.findViewById(R.id.phone);
+        CircleImageView profilePic=header.findViewById(R.id.profile_pic);
+        TextView personName=header.findViewById(R.id.person_name);
+        TextView personMail=header.findViewById(R.id.person_mail);
+        personName.setText(firebaseUser.getDisplayName().toString());
+        personMail.setText(firebaseUser.getEmail());
+
+        Glide.with(this)
+                .load(firebaseUser.getPhotoUrl())
+                .error(R.drawable.ic_baseline_account_circle_24)
+                .into(profilePic);
 
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -103,6 +118,20 @@ public class HomeActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
 
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull  Task<Void> task) {
+                        Toast.makeText(HomeActivity.this,"sign out successful",Toast.LENGTH_LONG).show();
+                        mAuth.signOut();
+                        finish();
+                    }
+                });
             }
         });
 

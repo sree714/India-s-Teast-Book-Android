@@ -3,9 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@color/Maroon_500"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:padding="30dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
@@ -16,22 +13,12 @@
         android:orientation="horizontal">
 
 
-        <RelativeLayout
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_pic"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_gravity="center"
-            android:background="@drawable/name_circle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="S"
-                android:textColor="@color/white"
-                android:textSize="40dp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
+            android:src="@drawable/ic_baseline_south_24"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -41,6 +28,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/person_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Smrity Banerjee"
@@ -49,6 +37,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/person_mail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="smritysreebanerjee714@gmail.com"
