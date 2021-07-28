@@ -71,11 +71,13 @@ public class HomeActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
-        firebaseUser=mAuth.getCurrentUser();
+        firebaseUser = mAuth.getCurrentUser();
 
 
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        if (firebaseUser == null) {
+            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+            startActivityForResult(signInIntent, RC_SIGN_IN);
+        }
 
 
         openFragment(new HomeFragment());
@@ -86,16 +88,19 @@ public class HomeActivity extends AppCompatActivity {
 
         navigation.setItemIconTintList(null);
         View header = navigation.getHeaderView(0);
-        CircleImageView profilePic=header.findViewById(R.id.profile_pic);
-        TextView personName=header.findViewById(R.id.person_name);
-        TextView personMail=header.findViewById(R.id.person_mail);
-        personName.setText(firebaseUser.getDisplayName().toString());
-        personMail.setText(firebaseUser.getEmail());
+        CircleImageView profilePic = header.findViewById(R.id.profile_pic);
+        TextView personName = header.findViewById(R.id.person_name);
+        TextView personMail = header.findViewById(R.id.person_mail);
+        if (firebaseUser != null) {
+            personName.setText(firebaseUser.getDisplayName().toString());
+            personMail.setText(firebaseUser.getEmail());
 
-        Glide.with(this)
-                .load(firebaseUser.getPhotoUrl())
-                .error(R.drawable.ic_baseline_account_circle_24)
-                .into(profilePic);
+            Glide.with(this)
+                    .load(firebaseUser.getPhotoUrl())
+                    .error(R.drawable.ic_baseline_account_circle_24)
+                    .into(profilePic);
+        }
+
 
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -126,8 +131,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull  Task<Void> task) {
-                        Toast.makeText(HomeActivity.this,"sign out successful",Toast.LENGTH_LONG).show();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(HomeActivity.this, "sign out successful", Toast.LENGTH_LONG).show();
                         mAuth.signOut();
                         finish();
                     }
@@ -173,9 +178,12 @@ public class HomeActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             //Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
                             // updateUI(user);
                             Toast.makeText(HomeActivity.this, "Sigh in successful", Toast.LENGTH_SHORT).show();
+                            finish();
+                            Intent intent = getIntent();
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             // Log.w(TAG, "signInWithCredential:failure", task.getException());
