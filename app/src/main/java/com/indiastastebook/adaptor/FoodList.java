@@ -1,15 +1,18 @@
 package com.indiastastebook.adaptor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.indiastastebook.R;
+import com.indiastastebook.activity.RecipeDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,10 +66,12 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView circleImageView;
+        private LinearLayout linearLayout;
 
         ViewHolder(View itemview) {
             super(itemview);
             circleImageView = itemview.findViewById(R.id.food_list_pic);
+            linearLayout=itemview.findViewById(R.id.root_layout);
         }
 
         public void bind(Context context, int position, String s) {
@@ -74,6 +79,15 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
                     .load(s)
                     .error(R.drawable.ic_baseline_account_circle_24)
                     .into(circleImageView);
+
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(v.getContext(), RecipeDetails.class);
+                    v.getContext().startActivity(intent);
+
+                }
+            });
         }
     }
 }

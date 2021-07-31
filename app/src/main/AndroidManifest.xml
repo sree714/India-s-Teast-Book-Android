@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IndiasTeastBook">
+        <activity android:name=".activity.RecipeDetails"></activity>
         <activity
             android:name=".activity.HomeActivity"
             android:launchMode="singleTop" />
-
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
