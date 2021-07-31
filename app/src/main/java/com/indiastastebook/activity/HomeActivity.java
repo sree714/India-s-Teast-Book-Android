@@ -217,4 +217,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    public void startRecipeDetails() {
+        Intent intent = new Intent(this, RecipeDetails.class);
+        startActivity(intent);
+    }
 }

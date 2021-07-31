@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.indiastastebook.R;
+import com.indiastastebook.activity.HomeActivity;
 import com.indiastastebook.activity.RecipeDetails;
 
 import java.util.ArrayList;
@@ -83,9 +84,7 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(v.getContext(), RecipeDetails.class);
-                    v.getContext().startActivity(intent);
-
+                    ((HomeActivity) context).startRecipeDetails();
                 }
             });
         }
