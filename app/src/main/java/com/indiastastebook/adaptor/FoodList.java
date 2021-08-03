@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.indiastastebook.R;
 import com.indiastastebook.activity.HomeActivity;
 import com.indiastastebook.activity.RecipeDetails;
+import com.indiastastebook.model.FoodDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +24,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
-    List<String> foodList = new ArrayList<>();
+    List<FoodDetails> foodList = new ArrayList<>();
     Context context;
 
     public FoodList(Context context) {
         this.context = context;
     }
 
-    public void updateData(List<String> foodLists) {
+    public void updateData(List<FoodDetails> foodLists) {
         foodList.clear();
         foodList.addAll(foodLists);
         notifyDataSetChanged();
@@ -68,18 +70,22 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView circleImageView;
         private LinearLayout linearLayout;
+        private TextView foodListName;
 
         ViewHolder(View itemview) {
             super(itemview);
             circleImageView = itemview.findViewById(R.id.food_list_pic);
             linearLayout=itemview.findViewById(R.id.root_layout);
+            foodListName=itemview.findViewById(R.id.food_list_name);
         }
 
-        public void bind(Context context, int position, String s) {
+        public void bind(Context context, int position, FoodDetails foodDetails) {
             Glide.with(context)
-                    .load(s)
+                    .load(foodDetails.getImage())
                     .error(R.drawable.ic_baseline_account_circle_24)
                     .into(circleImageView);
+
+            foodListName.setText(foodDetails.getName());
 
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

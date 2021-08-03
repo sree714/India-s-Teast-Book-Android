@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.indiastastebook.R;
 import com.indiastastebook.adaptor.FoodList;
+import com.indiastastebook.model.FoodDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +43,10 @@ public class RegionFragment extends Fragment {
 
         FoodList food = new FoodList(view.getContext());
         foodList.setAdapter(food);
-        List<String> list = new ArrayList<>();
-        list.add("https://firebasestorage.googleapis.com/v0/b/india-s-taste-book.appspot.com/o/fish%20curry.jpg?alt=media&token=c71d6570-33f2-467b-ac20-b695374a170b");
-        list.add("https://firebasestorage.googleapis.com/v0/b/india-s-taste-book.appspot.com/o/Shukto.jpg?alt=media&token=4dfe3166-c4e7-44de-9d6e-f771b3175bb4");
-        food.updateData(list);
+        List<FoodDetails> list = new ArrayList<>();
+        // list.add("https://firebasestorage.googleapis.com/v0/b/india-s-taste-book.appspot.com/o/fish%20curry.jpg?alt=media&token=c71d6570-33f2-467b-ac20-b695374a170b");
+        // list.add("https://firebasestorage.googleapis.com/v0/b/india-s-taste-book.appspot.com/o/Shukto.jpg?alt=media&token=4dfe3166-c4e7-44de-9d6e-f771b3175bb4");
+        // food.updateData(list);
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -66,12 +67,25 @@ public class RegionFragment extends Fragment {
                                     QuerySnapshot document1 = task.getResult();
                                     for (int j = 0; j < document1.getDocuments().size(); j++) {
                                         Log.e("LOGDATA_1", document1.getDocuments().get(j).getData().toString());
+                                        list.add(
+                                                new FoodDetails(
+                                                        document1.getDocuments().get(j).getData().get("Image").toString(),
+                                                        document1.getDocuments().get(j).getData().get("Name").toString(),
+                                                        document1.getDocuments().get(j).getData().get("Process").toString()
+
+                                                )
+                                        );
+
                                     }
+
+
 
                                 }
                             }
                         });
                     }
+
+                    food.updateData(list);
 
                 }
             }
