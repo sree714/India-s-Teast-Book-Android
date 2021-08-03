@@ -48,6 +48,7 @@ public class RegionFragment extends Fragment {
         // list.add("https://firebasestorage.googleapis.com/v0/b/india-s-taste-book.appspot.com/o/Shukto.jpg?alt=media&token=4dfe3166-c4e7-44de-9d6e-f771b3175bb4");
         // food.updateData(list);
 
+        Log.e("FRAGMENT_NAME", title);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference mainCollection = db.collection("Food Table");
@@ -59,33 +60,31 @@ public class RegionFragment extends Fragment {
                     for (int i = 0; i < document.getDocuments().size(); i++) {
                         Log.e("LOGDATA", document.getDocuments().get(i).getData().get("Region").toString());
                         String docId = document.getDocuments().get(i).getId();
-                        CollectionReference recipe = mainCollection.document(docId).collection("Recipe");
-                        recipe.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    QuerySnapshot document1 = task.getResult();
-                                    for (int j = 0; j < document1.getDocuments().size(); j++) {
-                                        Log.e("LOGDATA_1", document1.getDocuments().get(j).getData().toString());
-                                        list.add(
-                                                new FoodDetails(
-                                                        document1.getDocuments().get(j).getData().get("Image").toString(),
-                                                        document1.getDocuments().get(j).getData().get("Name").toString(),
-                                                        document1.getDocuments().get(j).getData().get("Process").toString()
-
-                                                )
-                                        );
-
+                        String databaseRegion = document.getDocuments().get(i).getData().get("Region").toString();
+                        if (databaseRegion.equals(title.toLowerCase())) {
+                            CollectionReference recipe = mainCollection.document(docId).collection("Recipe");
+                            recipe.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        QuerySnapshot document1 = task.getResult();
+                                        for (int j = 0; j < document1.getDocuments().size(); j++) {
+                                            Log.e("LOGDATA_1", document1.getDocuments().get(j).getData().toString());
+                                            list.add(
+                                                    new FoodDetails(
+                                                            document1.getDocuments().get(j).getData().get("Name").toString(),
+                                                            document1.getDocuments().get(j).getData().get("Image").toString(),
+                                                            document1.getDocuments().get(j).getData().get("Process").toString()
+                                                    )
+                                            );
+                                        }
+                                        food.updateData(list);
                                     }
-
-
-
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
 
-                    food.updateData(list);
 
                 }
             }
