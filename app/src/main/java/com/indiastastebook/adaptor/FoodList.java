@@ -90,7 +90,7 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((HomeActivity) context).startRecipeDetails();
+                    ((HomeActivity) context).startRecipeDetails(foodDetails);
                 }
             });
         }

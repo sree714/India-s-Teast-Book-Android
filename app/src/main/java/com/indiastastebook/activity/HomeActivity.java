@@ -35,6 +35,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.indiastastebook.R;
 import com.indiastastebook.fragment.FavouriteFragment;
 import com.indiastastebook.fragment.HomeFragment;
+import com.indiastastebook.model.FoodDetails;
 import com.indiastastebook.utils.App;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -217,8 +218,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    public void startRecipeDetails() {
+    public void startRecipeDetails(FoodDetails foodDetails) {
         Intent intent = new Intent(this, RecipeDetails.class);
+        intent.putExtra("docId",foodDetails.getId());
+        intent.putExtra("image",foodDetails.getImage());
+        intent.putExtra("name",foodDetails.getName());
+        intent.putExtra("process",foodDetails.getProcess());
         startActivity(intent);
     }
 }

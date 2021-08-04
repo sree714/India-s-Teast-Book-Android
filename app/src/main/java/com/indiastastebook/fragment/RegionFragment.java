@@ -72,6 +72,7 @@ public class RegionFragment extends Fragment {
                                             Log.e("LOGDATA_1", document1.getDocuments().get(j).getData().toString());
                                             list.add(
                                                     new FoodDetails(
+                                                            document1.getDocuments().get(j).getId().toString(),
                                                             document1.getDocuments().get(j).getData().get("Name").toString(),
                                                             document1.getDocuments().get(j).getData().get("Image").toString(),
                                                             document1.getDocuments().get(j).getData().get("Process").toString()
