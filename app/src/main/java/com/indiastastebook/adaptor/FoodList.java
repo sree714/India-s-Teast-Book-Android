@@ -75,8 +75,8 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
         ViewHolder(View itemview) {
             super(itemview);
             circleImageView = itemview.findViewById(R.id.food_list_pic);
-            linearLayout=itemview.findViewById(R.id.root_layout);
-            foodListName=itemview.findViewById(R.id.food_list_name);
+            linearLayout = itemview.findViewById(R.id.root_layout);
+            foodListName = itemview.findViewById(R.id.food_list_name);
         }
 
         public void bind(Context context, int position, FoodDetails foodDetails) {

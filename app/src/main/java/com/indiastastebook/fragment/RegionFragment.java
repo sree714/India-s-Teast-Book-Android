@@ -1,5 +1,6 @@
 package com.indiastastebook.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,11 +45,13 @@ public class RegionFragment extends Fragment {
         FoodList food = new FoodList(view.getContext());
         foodList.setAdapter(food);
         List<FoodDetails> list = new ArrayList<>();
-        // list.add("https://firebasestorage.googleapis.com/v0/b/india-s-taste-book.appspot.com/o/fish%20curry.jpg?alt=media&token=c71d6570-33f2-467b-ac20-b695374a170b");
-        // list.add("https://firebasestorage.googleapis.com/v0/b/india-s-taste-book.appspot.com/o/Shukto.jpg?alt=media&token=4dfe3166-c4e7-44de-9d6e-f771b3175bb4");
-        // food.updateData(list);
 
         Log.e("FRAGMENT_NAME", title);
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Please wait");
+        progressDialog.setMessage("Please wait we are loading the recipe");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference mainCollection = db.collection("Food Table");
@@ -66,6 +69,7 @@ public class RegionFragment extends Fragment {
                             recipe.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    progressDialog.dismiss();
                                     if (task.isSuccessful()) {
                                         QuerySnapshot document1 = task.getResult();
                                         for (int j = 0; j < document1.getDocuments().size(); j++) {
@@ -89,6 +93,7 @@ public class RegionFragment extends Fragment {
 
                 }
             }
+
         });
 
 
@@ -99,5 +104,7 @@ public class RegionFragment extends Fragment {
         foodList = view.findViewById(R.id.food_list);
 
     }
+
+
 
 }

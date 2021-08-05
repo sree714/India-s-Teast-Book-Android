@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/activity_recipe_details.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10099637681159421" />
         <entry key="app/src/main/res/layout/fragment_region.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/recycler_foodlist.xml" value="0.1" />
       </map>
     </option>
   </component>

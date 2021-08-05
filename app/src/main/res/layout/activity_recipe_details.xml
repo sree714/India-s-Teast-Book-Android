@@ -54,29 +54,28 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_margin="30dp"
-                android:scaleType="fitXY"
                 android:src="@drawable/app_icon" />
 
             <TextView
                 android:id="@+id/recipe_details_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Title"
                 android:textColor="@color/Maroon_500"
-                android:textStyle="bold"
                 android:textSize="30sp"
-                android:layout_gravity="center"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/recipe_details_process"
-                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/Maroon_500"
+                android:layout_margin="20dp"
+                android:gravity="center"
                 android:text="@string/details"
-                android:textStyle="italic"
+                android:textColor="@color/Maroon_500"
                 android:textSize="20sp"
-                android:gravity="center"/>
+                android:textStyle="italic" />
         </LinearLayout>
     </ScrollView>
 
