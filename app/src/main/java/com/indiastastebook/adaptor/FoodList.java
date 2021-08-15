@@ -1,11 +1,10 @@
 package com.indiastastebook.adaptor;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.indiastastebook.R;
 import com.indiastastebook.activity.HomeActivity;
-import com.indiastastebook.activity.RecipeDetails;
 import com.indiastastebook.model.FoodDetails;
 
 import java.util.ArrayList;
@@ -69,13 +67,13 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView circleImageView;
-        private LinearLayout linearLayout;
+        private RelativeLayout relativeLayout;
         private TextView foodListName;
 
         ViewHolder(View itemview) {
             super(itemview);
             circleImageView = itemview.findViewById(R.id.food_list_pic);
-            linearLayout = itemview.findViewById(R.id.root_layout);
+            relativeLayout = itemview.findViewById(R.id.root_layout);
             foodListName = itemview.findViewById(R.id.food_list_name);
         }
 
@@ -87,7 +85,7 @@ public class FoodList extends RecyclerView.Adapter<FoodList.ViewHolder> {
 
             foodListName.setText(foodDetails.getName());
 
-            linearLayout.setOnClickListener(new View.OnClickListener() {
+            relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ((HomeActivity) context).startRecipeDetails(foodDetails);
