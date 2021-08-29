@@ -22,6 +22,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <TextView
@@ -65,8 +68,8 @@
                     android:id="@+id/recipe_details_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Title"
                     android:layout_gravity="center"
+                    android:text="Title"
                     android:textColor="@color/Maroon_500"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -75,8 +78,8 @@
                     android:id="@+id/toggle_star_details"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="15dp"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
                     android:background="@drawable/toggle_star"
                     android:textOff=""
                     android:textOn="" />

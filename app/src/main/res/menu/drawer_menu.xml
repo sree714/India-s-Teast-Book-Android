@@ -11,7 +11,7 @@
             android:title="Home" />
         <item
             android:id="@+id/menu_favourite"
-            android:icon="@drawable/ic_baseline_star_24"
+            android:icon="@drawable/ic_baseline_star_24_black"
             android:title="Favourite Recipe" />
 
         <item
